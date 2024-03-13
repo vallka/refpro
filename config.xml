@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>refpro</name>
+    <displayName><![CDATA[Extended Affiliate Program]]></displayName>
+    <version><![CDATA[2.9.26]]></version>
+    <description><![CDATA[A multi-level affiliate program with differentiation percent for groups and categories]]></description>
+    <author><![CDATA[DaRiuS]]></author>
+    <tab><![CDATA[advertising_marketing]]></tab>
+	<confirmUninstall><![CDATA[Attention! Will eliminate all the partners saved. Are you sure you want uninstall?]]></confirmUninstall>
+    <is_configurable>1</is_configurable>
+    <need_instance>1</need_instance>
+	<limited_countries></limited_countries>
+</module>

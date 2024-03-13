@@ -1,0 +1,50 @@
+.stage_modal_jquery {
+  position: fixed;
+  z-index: 999999;
+  background: rgba(0, 0, 0, 0.3);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; }
+
+.modal_jquery {
+  position: absolute;
+  background: #FFFFFF;
+  border-radius: 5px;
+  border: 1px solid #DDDDDD;
+  z-index: 999999;
+  min-width: 335px; }
+  @media (min-width: 568px) {
+    .modal_jquery {
+      min-width: 568px; } }
+  .modal_jquery .modal_close {
+    position: absolute;
+    color: #444444;
+    right: 8px;
+    top: 1px;
+    font-size: 21px; }
+  .modal_jquery .modal_header {
+    padding-left: 15px;
+    padding-right: 15px;
+    background: #03a9db;
+    height: 39px;
+    overflow: hidden;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px; }
+    .modal_jquery .modal_header h3 {
+      color: #FFFFFF;
+      font-size: 18px;
+      font-weight: normal;
+      line-height: 39px;
+      margin: 0; }
+    .modal_jquery .modal_header .modal_close {
+      right: 15px;
+      top: 4px; }
+  .modal_jquery .modal_content {
+    padding: 15px; }
+  .modal_jquery .modal_footer {
+    padding: 10px 15px;
+    background: #DDDDDD; }
+
+
+/*# sourceMappingURL=modal.jquery.css.map */

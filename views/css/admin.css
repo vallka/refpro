@@ -1,0 +1,479 @@
+.custTable {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.custTable td {
+    border: 1px dotted;
+    padding: 5px;
+}
+
+.custTable thead td {
+    font-size: 11pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+.cb {
+    text-align: center;
+    width: 21px;
+}
+
+.money,
+.total {
+    text-align: center;
+    width: 151px;
+}
+
+.hasOrder td {
+    background-color: #dddddd !important;
+}
+
+.settings input {
+    width: 99%;
+}
+
+.settings2 td {
+    width: 50%;
+}
+
+.settings2 input {
+    width: 98%;
+}
+
+.settings2 select {
+    padding: 3px;
+    width: auto;
+    color: #000;
+}
+
+.settings2 input[type='checkbox'] {
+    width: auto;
+}
+
+.bigButton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto !important;
+    padding: 5px 18px !important;
+}
+
+.customDiv {
+    max-width: 880px;
+}
+
+#ref_footer .logo {
+    float: right;
+    width: 160px;
+}
+
+#ref_footer {
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+#ref_footer .in {
+    float: left;
+    padding: 31px 0px 0px 31px;
+    width: 725px;
+}
+
+#ref_footer .in .row {
+    background: none repeat scroll 0 0 transparent;
+    overflow: hidden;
+    padding-bottom: 14px;
+}
+
+#ref_footer .in .row .label {
+    float: left;
+    font-weight: bold;
+    width: 120px;
+    color: #333333 !important;
+}
+
+.goZeroData {
+    display: none;
+}
+
+.ui-dialog-buttonpane {
+    display: block;
+}
+
+#mailerForm .row input,
+#mailerForm .row textarea {
+    border-radius: 5px 5px 5px 5px;
+    margin: 10px 0;
+    padding: 5px;
+    width: 100%;
+    color: #000;
+    box-sizing: border-box;
+}
+
+#mailerForm .row textarea {
+    height: 142px;
+}
+
+.tip {
+    bottom: 4px;
+    color: gray;
+    float: right;
+    font-size: 9pt;
+    position: relative;
+    width: 701px;
+    margin-top: 4px;
+}
+
+.ui-widget-content p {
+    color: #000000;
+}
+
+.stage_form_load_image {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+.form_load_image,
+.form_load_image2 {
+    position: absolute;
+    left: 50%;
+    width: 50%;
+    margin-left: -25%;
+    top: 50px;
+    z-index: 999999 !important;
+    background: #ffffff;
+    border: 1px solid #979797;
+    border-radius: 10px;
+    padding: 0;
+}
+.form_load_image .bigButton,
+.form_load_image2 .bigButton {
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+.close_form_load_image {
+    position: absolute;
+    right: 0.3em;
+    top: 50%;
+    width: 19px;
+    margin: -10px 0 0 0;
+    padding: 1px;
+    height: 18px;
+}
+.close_form_load_image:hover {
+    border: 1px solid #333333;
+    font-weight: bold;
+    color: #ffffff;
+    background: #333333;
+}
+.form_load_image .ui-dialog-titlebar,
+.form_load_image2 .ui-dialog-titlebar {
+    position: relative;
+}
+
+.form_load_image img {
+    width: 100%;
+}
+
+#involvedEveryoneButton {
+    margin: 20px;
+    cursor: pointer;
+}
+
+.c-modal .modal-footer .buttons {
+    margin-right: 15px;
+}
+
+.c-modal .modal-footer .buttons button {
+    margin-left: 15px;
+}
+
+.table {
+    width: 100%;
+}
+
+.custom_responsive .settings2 {
+    margin-bottom: 20px;
+}
+
+.panel-heading-action {
+    position: absolute;
+    right: 0;
+}
+
+.refpro_heading {
+    border: none;
+    font-size: 1.2em;
+    line-height: 2.2em;
+    height: 2.2em;
+    text-transform: uppercase;
+    border-bottom: solid 1px #eee;
+    padding: 0 0 0 5px;
+    margin: -20px -16px 15px -16px;
+}
+
+.process-icon-new {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    font-size: 28px;
+    background: transparent;
+    background-size: 26px;
+    background-position: center;
+    text-align: center;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-weight: normal;
+    font-stretch: normal;
+}
+
+.process-icon-new:before {
+    content: '';
+}
+
+.modal_1 .modal_close {
+    position: absolute;
+    color: #444444;
+    right: 8px;
+    top: 1px;
+    font-size: 21px;
+}
+.modal_1.modal_close {
+    position: absolute;
+    color: #444444;
+    right: 8px;
+    top: 1px;
+    font-size: 21px;
+}
+.modal_1 .modal_header {
+    padding-left: 15px;
+    padding-right: 15px;
+    background: #03a9db;
+    height: 39px;
+    overflow: hidden;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.modal_1 .modal_header h3 {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 39px;
+    margin: 0 !important;
+    border: none !important;
+}
+.modal_1 .modal_header .modal_close {
+    right: 15px;
+    top: 4px;
+}
+.modal_1 .modal_content {
+    padding: 15px;
+}
+
+/* refpro-tree licensed under MIT, source https://codepen.io/bisserof/pen/fdtBm */
+
+ul.refpro-tree {
+    margin: 1em;
+}
+
+.refpro-tree input {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+.refpro-tree input ~ ul {
+    display: none;
+}
+
+.refpro-tree input:checked ~ ul {
+    display: block;
+}
+
+.refpro-tree li {
+    line-height: 1.2;
+    position: relative;
+    padding: 0 0 1em 1em;
+}
+
+ul.refpro-tree,
+.refpro-tree ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.refpro-tree ul li {
+    padding: 1em 0 0 1em;
+}
+
+.refpro-tree > li:last-child {
+    padding-bottom: 0;
+}
+
+.refpro-tree-label {
+    position: relative;
+    display: inline-block;
+    background: #fff;
+}
+
+label.refpro-tree-label {
+    cursor: pointer;
+    margin-bottom: 0px;
+    font-weight: normal;
+}
+
+label.refpro-tree-label:hover {
+    color: #666;
+}
+
+label.refpro-tree-label:before {
+    background: #000;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    float: left;
+    margin: 0 1em 0 -2em;
+    width: 1em;
+    height: 1em;
+    border-radius: 1em;
+    content: '+';
+    text-align: center;
+    line-height: 0.9em;
+}
+
+:checked ~ label.refpro-tree-label:before {
+    content: '–';
+}
+
+.refpro-tree li:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -0.5em;
+    display: block;
+    width: 0;
+    border-left: 1px solid #777;
+    content: '';
+}
+
+.refpro-tree-label:after {
+    position: absolute;
+    top: 0;
+    left: -1.5em;
+    display: block;
+    height: 0.5em;
+    /* width: 1em; */
+    width: 13px;
+    border-bottom: 1px solid #777;
+    border-left: 1px solid #777;
+    border-radius: 0 0 0 0.3em;
+    content: '';
+}
+
+label.refpro-tree-label:after {
+    border-bottom: 0;
+}
+
+:checked ~ label.refpro-tree-label:after {
+    border-radius: 0 0.3em 0 0;
+    border-top: 1px solid #777;
+    border-right: 1px solid #777;
+    border-bottom: 0;
+    border-left: 0;
+    bottom: 0;
+    top: 0.5em;
+    height: auto;
+}
+
+.refpro-tree li:last-child:before {
+    height: 1em;
+    bottom: auto;
+}
+
+.refpro-tree > li:last-child:before {
+    display: none;
+}
+
+.refpro-tree-current-node,
+label.refpro-tree-current-node {
+    font-weight: bold;
+    float: none;
+    width: auto;
+}
+
+.category_tree_js_parent {
+    padding-left: 25px;
+    position: relative;
+}
+.category_tree_js {
+    display: flex;
+    min-height: 28px;
+    align-items: center;
+    justify-content: start;
+    border-top: 1px solid #0000000f;
+    margin-left: 20px;
+}
+.category_tree_js input {
+    margin: 0 15px !important;
+    max-height: 2em;
+    min-width: 2em;
+}
+.category_tree_js span.expander {
+    min-width: 1.4em;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.5em;
+    position: absolute;
+    background: #a4a4a424;
+    margin-left: -35px;
+    border-radius: 2px;
+    /* color: white; */
+}
+.catTreeControls {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-bottom: 20px;
+    /* max-width: 700px; */
+    position: relative;
+}
+.catTreeControls div {
+    margin-right: 10px;
+}
+.catTreeControls .factor_control {
+    position: absolute;
+    right: 130px;
+}
+.catTreeControls .checkall2_control {
+    position: absolute;
+    right: -12px;
+}
+.ct_button {
+    cursor: pointer;
+    padding: 6px;
+    background: #6c868e;
+    color: white;
+    box-shadow: 1px 1px 2px 0px #00000087;
+}
+#treeJsJsox {
+    /* max-width: 700px; */
+    display: block;
+}
+#treeJsJsox .categoryCheckbox {
+    position: absolute;
+    right: 35px;
+}
+#treeJsJsox .category_percent {
+    width: 40px;
+    position: absolute;
+    right: 125px;
+}
