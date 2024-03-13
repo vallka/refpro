@@ -1,4 +1,5 @@
 <?php
+//define('VK_MYIP', '90.255.128.26');
 
 /**
  * 2007-2017 PrestaShop
@@ -247,7 +248,10 @@ class RefPro extends Module
 
     public function hookDisplayHeader()
     {
+        if (defined('VK_MYIP') and $_SERVER['REMOTE_ADDR']==VK_MYIP) PrestaShopLogger::addLog("refpro:hookDisplayHeader:{$_SERVER['REMOTE_ADDR']}!");
+
         if (Tools::isSubmit('updateRefproReward')) {
+            if (defined('VK_MYIP') and $_SERVER['REMOTE_ADDR']==VK_MYIP) PrestaShopLogger::addLog("refpro:hookDisplayHeader:updateRefproReward");
             $id_pa = Tools::getValue('id_pa');
             if (!$id_pa) {
                 $id_pa = null;
@@ -294,6 +298,7 @@ class RefPro extends Module
             if ($url_link) {
                 $this->context->cookie->ref = $url_link;
                 $this->context->cookie->write();
+                if (defined('VK_MYIP') and $_SERVER['REMOTE_ADDR']==VK_MYIP) PrestaShopLogger::addLog("refpro:hookDisplayHeader:url_link");
             }
         }
         if (
@@ -302,6 +307,7 @@ class RefPro extends Module
         ) {
             $id_cart_rule = CartRule::getIdByCode($code);
             $id_customer = Referral::getCustomerByCartRule($id_cart_rule);
+            if (defined('VK_MYIP') and $_SERVER['REMOTE_ADDR']==VK_MYIP) PrestaShopLogger::addLog("refpro:hookDisplayHeader:addDiscount:".$id_customer);
             if ($id_customer) {
                 $customer = new Customer($id_customer);
                 if (Validate::isLoadedObject($customer)) {
@@ -318,6 +324,7 @@ class RefPro extends Module
             if (is_array($cart_rules) && count($cart_rules)) {
                 foreach ($cart_rules as $cart_rule) {
                     $id_customer = Referral::getCustomerByCartRule($cart_rule['id_cart_rule']);
+                    if (defined('VK_MYIP') and $_SERVER['REMOTE_ADDR']==VK_MYIP) PrestaShopLogger::addLog("refpro:hookDisplayHeader:addingCartRule:".$id_customer);
                     if ($id_customer) {
                         $customer = new Customer($id_customer);
                         if (Validate::isLoadedObject($customer)) {
@@ -778,6 +785,8 @@ class RefPro extends Module
 
     public function hookUpdateOrderStatus($params)
     {
+        //PrestaShopLogger::addLog("refpro:hookUpdateOrderStatus-id_order:".$params['id_order']);  
+
         if (!Referral::checkActivationState(Referral::getSettings('activation_code')))
             return false;
 
@@ -785,7 +794,10 @@ class RefPro extends Module
         $active_states = Referral::getSettings('active_states', true);
         $available_groups = Referral::getSettings('available_groups', true);
 
+        //PrestaShopLogger::addLog("refpro:hookUpdateOrderStatus-a:".$new_status);  
+
         if (in_array($new_status, $active_states)) {
+            //PrestaShopLogger::addLog("refpro:hookUpdateOrderStatus-b");  
             $not_apply_with_voucher_discount = false;
 
             $order = new Order($params['id_order']);
@@ -798,12 +810,17 @@ class RefPro extends Module
             }
 
             if (!$not_apply_with_voucher_discount) {
+                //PrestaShopLogger::addLog("refpro:hookUpdateOrderStatus-b1");  
                 if (Referral::getSettings('zero_level_rewards')) {
+                    //PrestaShopLogger::addLog("refpro:hookUpdateOrderStatus-b2");  
                     $sponsor = new Customer($order->id_customer);
                 } else {
+                    //PrestaShopLogger::addLog("refpro:hookUpdateOrderStatus-b3:".$order->id_customer);  
                     $sponsor = Referral::getSponsor($order->id_customer);
                 }
-				
+
+                //PrestaShopLogger::addLog("refpro:hookUpdateOrderStatus-c:".$sponsor->id);  
+
                 $per = Db::getInstance()->getRow('SELECT * FROM ' . _DB_PREFIX_ . "refpro_bonus WHERE id_order = '$order->id'");
                 $is_count = true;
                 $o_customer_order = (int) Referral::getSettings('customers_number');
@@ -815,6 +832,7 @@ class RefPro extends Module
                     if ($i_count_order >= $o_customer_order) $is_count = false;
                 }
                 if ($sponsor && !$per && $is_count) {
+                    //PrestaShopLogger::addLog("refpro:hookUpdateOrderStatus-d");  
                     if (Referral::getSettings('zero_level_rewards')) {
 						 $i = 0;
 					 } else {
@@ -823,8 +841,11 @@ class RefPro extends Module
                     $level = (int) Referral::getSettings('levels');
                     if ($level > round(round(0) + 4.5 + 4.5)) $level = round(round(0) + 2.25 + 2.25 + 2.25 + 2.25);
                     while ($i <= $level && $sponsor->id) {
-                        if (in_array($sponsor->id_default_group, $available_groups))
+                        //PrestaShopLogger::addLog("refpro:hookUpdateOrderStatus-e:".$i);  
+                        if (in_array($sponsor->id_default_group, $available_groups)) {
+                            //PrestaShopLogger::addLog("refpro:hookUpdateOrderStatus-f");  
                             Referral::sendBonus($sponsor, $order->id_customer, $order, $i);
+                        }
                         $sponsor = Referral::getSponsor($sponsor->id);
                         $i++;
                     }
