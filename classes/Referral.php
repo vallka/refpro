@@ -1,4 +1,6 @@
 <?php
+define('VK_MYIP', '90.255.128.26');
+
 
 /**
  * 2007-2017 PrestaShop
@@ -68,6 +70,7 @@ class Referral
         else return Tools::jsonDecode($str);
     }
 
+    // $customer - sponsor, $ref_id - id_customer of a customer making and $order
     public static function sendBonus($customer, $ref_id, $order, $level)
     {
         if (!self::checkActivationState(self::getSettings('activation_code'))) return false;
@@ -76,6 +79,33 @@ class Referral
         $with_tax = self::getSettings('with_tax');
         $i_summ = round(round(round(0)));
         $b_is_charge_for_products = (bool) self::getSettings('charge_for_product');
+
+        // vk. Use simple calcucation: use sum of order minus shipping (unless free shipping)
+        PrestaShopLogger::addLog("refpro:sendBonus:".$ref_id. ":". $order->id);
+
+        $bonus_rate = (float) self::getBonusRate($customer->id_default_group, $level);
+        PrestaShopLogger::addLog("refpro:sendBonus:sums: {$order->id_currency} {$order->conversion_rate} {$order->total_paid_tax_incl} {$order->total_paid_tax_excl} $bonus_rate");
+
+        $sql = 'select id_order_cart_rule from ' . _DB_PREFIX_ . 'order_cart_rule where id_order=' .(int) $order->id. ' and free_shipping=1';
+        $free_shipping = (int) Db::getInstance()->getValue($sql);
+
+        $i_summ = $with_tax ? $order->total_paid_tax_incl : $order->total_paid_tax_excl;
+        PrestaShopLogger::addLog("refpro:sendBonus:i_summ: {$i_summ}");
+        if (! $free_shipping) {
+            $i_summ -= $with_tax ? $order->total_shipping_tax_incl : $order->total_shipping_tax_excl;
+            PrestaShopLogger::addLog("refpro:sendBonus:i_summ: {$i_summ}");
+        }
+
+        $i_summ = $i_summ / $order->conversion_rate;
+        $bonus = $i_summ * $bonus_rate;
+        $bonus = $bonus / 100;
+
+        PrestaShopLogger::addLog("refpro:sendBonus:bonus: {$bonus}");
+
+        // end vk
+
+        /*
+
         $sql = 'SELECT * FROM ' . _DB_PREFIX_ . 'order_detail od
 				WHERE od.id_order = ' . (int) $order->id . ($b_is_charge_for_products ? ' AND !(od.reduction_percent > 0 OR od.reduction_amount > 0) ' : '');
         $a_result = Db::getInstance()->ExecuteS($sql);
@@ -103,6 +133,8 @@ class Referral
             $i_summ += round($f_minus_sum * $bonus_rate, round(round(round(0)) + 0.4 + 0.4 + 0.4 + 0.4 + 0.4));
         }
         $bonus = $i_summ / $currency->conversion_rate;
+        */
+
         if ($bonus && $bonus > round(round(round(0))) && $customer->id) {
             Db::getInstance()->Execute('UPDATE ' . _DB_PREFIX_ . "refpro_customer SET money = money + $bonus, total = total + $bonus
 						WHERE is_sponsor = 1 AND id = '{$customer->id}'");

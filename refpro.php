@@ -248,10 +248,10 @@ class RefPro extends Module
 
     public function hookDisplayHeader()
     {
-        if (defined('VK_MYIP') and $_SERVER['REMOTE_ADDR']==VK_MYIP) PrestaShopLogger::addLog("refpro:hookDisplayHeader:{$_SERVER['REMOTE_ADDR']}!");
+        //if (defined('VK_MYIP') and $_SERVER['REMOTE_ADDR']==VK_MYIP) PrestaShopLogger::addLog("refpro:hookDisplayHeader:{$_SERVER['REMOTE_ADDR']}!");
 
         if (Tools::isSubmit('updateRefproReward')) {
-            if (defined('VK_MYIP') and $_SERVER['REMOTE_ADDR']==VK_MYIP) PrestaShopLogger::addLog("refpro:hookDisplayHeader:updateRefproReward");
+            //if (defined('VK_MYIP') and $_SERVER['REMOTE_ADDR']==VK_MYIP) PrestaShopLogger::addLog("refpro:hookDisplayHeader:updateRefproReward");
             $id_pa = Tools::getValue('id_pa');
             if (!$id_pa) {
                 $id_pa = null;
@@ -298,7 +298,7 @@ class RefPro extends Module
             if ($url_link) {
                 $this->context->cookie->ref = $url_link;
                 $this->context->cookie->write();
-                if (defined('VK_MYIP') and $_SERVER['REMOTE_ADDR']==VK_MYIP) PrestaShopLogger::addLog("refpro:hookDisplayHeader:url_link");
+                //if (defined('VK_MYIP') and $_SERVER['REMOTE_ADDR']==VK_MYIP) PrestaShopLogger::addLog("refpro:hookDisplayHeader:url_link");
             }
         }
         if (
@@ -307,7 +307,7 @@ class RefPro extends Module
         ) {
             $id_cart_rule = CartRule::getIdByCode($code);
             $id_customer = Referral::getCustomerByCartRule($id_cart_rule);
-            if (defined('VK_MYIP') and $_SERVER['REMOTE_ADDR']==VK_MYIP) PrestaShopLogger::addLog("refpro:hookDisplayHeader:addDiscount:".$id_customer);
+            //if (defined('VK_MYIP') and $_SERVER['REMOTE_ADDR']==VK_MYIP) PrestaShopLogger::addLog("refpro:hookDisplayHeader:addDiscount:".$id_customer);
             if ($id_customer) {
                 $customer = new Customer($id_customer);
                 if (Validate::isLoadedObject($customer)) {
@@ -324,7 +324,7 @@ class RefPro extends Module
             if (is_array($cart_rules) && count($cart_rules)) {
                 foreach ($cart_rules as $cart_rule) {
                     $id_customer = Referral::getCustomerByCartRule($cart_rule['id_cart_rule']);
-                    if (defined('VK_MYIP') and $_SERVER['REMOTE_ADDR']==VK_MYIP) PrestaShopLogger::addLog("refpro:hookDisplayHeader:addingCartRule:".$id_customer);
+                    //if (defined('VK_MYIP') and $_SERVER['REMOTE_ADDR']==VK_MYIP) PrestaShopLogger::addLog("refpro:hookDisplayHeader:addingCartRule:".$id_customer);
                     if ($id_customer) {
                         $customer = new Customer($id_customer);
                         if (Validate::isLoadedObject($customer)) {
